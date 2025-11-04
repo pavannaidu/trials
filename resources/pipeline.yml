@@ -1,0 +1,46 @@
+# Clinical Trials Pipeline Definition
+# Lakeflow Declarative Pipeline for ClinicalTrials.gov data ingestion
+
+resources:
+  pipelines:
+    clinical_trials_pipeline:
+      name: "[${bundle.target}] Clinical Trials Pipeline"
+      
+      # Pipeline libraries - notebooks to run
+      libraries:
+        - notebook:
+            path: ../src/pipeline.ipynb
+      
+      # Target catalog and schema
+      catalog: ${var.catalog}
+      target: clinical_trials
+      
+      # Configuration parameters passed to the notebook via spark.conf
+      # These parameters can be overridden by webapp requests
+      configuration:
+        catalog: ${var.catalog}
+        schema: ${var.schema}
+        volume: ${var.volume}
+        pipeline.condition: ${var.ct_condition}
+        pipeline.study_type: ${var.ct_study_type}
+        pipeline.status: ${var.ct_status}
+        pipeline.page_size: ${var.ct_page_size}
+        pipeline.max_pages: ${var.ct_max_pages}
+      
+      # Pipeline settings
+      development: true
+      photon: true
+      serverless: true
+      channel: CURRENT
+      
+      # Pipeline mode: triggered (batch) for API calls
+      continuous: false
+      
+      # Email notifications on pipeline events (optional)
+      # notifications:
+      #   - email_recipients:
+      #       - user@example.com
+      #     alerts:
+      #       - on-update-failure
+      #       - on-update-fatal-failure
+

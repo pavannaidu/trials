@@ -1,0 +1,66 @@
+# This is a Databricks asset bundle definition for clinical_trials.
+# The Databricks extension requires databricks.yml configuration file.
+# See https://docs.databricks.com/dev-tools/bundles/index.html for documentation.
+
+bundle:
+  name: clinical_trials
+
+# Include resource definitions (YAML/JSON only)
+include:
+  - resources/*.yml
+
+# Variables that can be referenced in resource definitions
+variables:
+  workspace:
+    description: "Workspace URL"
+    default: https://e2-demo-field-eng.cloud.databricks.com
+  catalog:
+    description: "Target catalog for pipeline tables"
+    default: pavan_naidu
+  schema:
+    description: "Target schema for pipeline tables"
+    default: clinical_trials
+  volume:
+    description: "Volume name for raw data"
+    default: raw_data
+  
+  # Clinical Trials Pipeline Parameters (webapp-configurable)
+  ct_condition:
+    description: "Medical condition to search for in ClinicalTrials.gov"
+    default: diabetes
+  ct_study_type:
+    description: "Type of clinical study (INTERVENTIONAL, OBSERVATIONAL, etc.)"
+    default: INTERVENTIONAL
+  ct_status:
+    description: "Study recruitment status (RECRUITING, COMPLETED, etc.)"
+    default: RECRUITING
+  ct_page_size:
+    description: "Number of records per API call"
+    default: "100"
+  ct_max_pages:
+    description: "Maximum number of API pages to fetch"
+    default: "5"
+
+targets:
+  dev:
+    mode: development
+    default: true
+    workspace:
+      host: https://e2-demo-field-eng.cloud.databricks.com
+      # Optionally set root path for bundle deployments
+      # root_path: /Users/${workspace.current_user.userName}/.bundle/${bundle.name}/${bundle.target}
+
+  ## Optionally, there could be 'staging' or 'prod' targets here.
+  #
+  # prod:
+  #   mode: production
+  #   workspace:
+  #     host: https://e2-demo-field-eng.cloud.databricks.com
+  #   variables:
+  #     catalog: production_catalog
+  #     schema: clinical_trials
+  #   resources:
+  #     pipelines:
+  #       clinical_trials_pipeline:
+  #         continuous: true
+  #         development: false
