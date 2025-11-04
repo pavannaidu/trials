@@ -1,6 +1,6 @@
 # Clinical Trials Pipeline
 
-Databricks pipeline for ingesting and processing clinical trials data from ClinicalTrials.gov API using VARIANT data type.
+Databricks pipeline for ingesting and processing clinical trials data from ClinicalTrials.gov API.
 
 ## Quick Start
 
