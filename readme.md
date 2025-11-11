@@ -21,7 +21,7 @@ Edit `databricks.yml` to configure:
 - `ct_study_type`: Study type (default: `INTERVENTIONAL`)
 - `ct_status`: Recruitment status (default: `RECRUITING`)
 - `ct_page_size`: Records per API call (default: `100`)
-- `ct_max_pages`: Max pages to fetch (default: `5`)
+- `ct_max_pages`: Max pages to fetch - 0 = unlimited, >0 = limit (default: `0`)
 
 ## Architecture
 

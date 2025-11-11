@@ -27,7 +27,7 @@ variables:
   # Clinical Trials Pipeline Parameters (webapp-configurable)
   ct_condition:
     description: "Medical condition to search for in ClinicalTrials.gov"
-    default: diabetes
+    default: medical devices
   ct_study_type:
     description: "Type of clinical study (INTERVENTIONAL, OBSERVATIONAL, etc.)"
     default: INTERVENTIONAL
@@ -38,8 +38,8 @@ variables:
     description: "Number of records per API call"
     default: "100"
   ct_max_pages:
-    description: "Maximum number of API pages to fetch"
-    default: "5"
+    description: "Maximum number of API pages to fetch (0 = unlimited, >0 = limit to that number)"
+    default: "0"
 
 targets:
   dev:
