@@ -19,7 +19,7 @@ variables:
     default: pavan_naidu
   schema:
     description: "Target schema for pipeline tables"
-    default: clinical_trials
+    default: trials
   volume:
     description: "Volume name for raw data"
     default: raw_data
@@ -27,7 +27,7 @@ variables:
   # Clinical Trials Pipeline Parameters (webapp-configurable)
   ct_condition:
     description: "Medical condition to search for in ClinicalTrials.gov"
-    default: medical devices
+    default: breast cancer
   ct_study_type:
     description: "Type of clinical study (INTERVENTIONAL, OBSERVATIONAL, etc.)"
     default: INTERVENTIONAL

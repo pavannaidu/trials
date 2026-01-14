@@ -13,7 +13,7 @@ resources:
       
       # Target catalog and schema
       catalog: ${var.catalog}
-      target: clinical_trials
+      target: ${var.schema}
       
       # Configuration parameters passed to the notebook via spark.conf
       # These parameters can be overridden by webapp requests
